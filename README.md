@@ -1,7 +1,7 @@
-# AMD DX11 Morphological Anti-Aliasing (MLAA) Sample
+# AMD Morphological Anti-Aliasing (MLAA) Sample
 <img src="mlaa11/media/Thumbnail.png" width="480" height="280" />
 
-This sample demonstrates a post-process pixel shader technique that applies Fullscreen Anti-Aliasing to an image. Morphological Anti-Aliasing (MLAA) was originally developed by Intel Lab but was designed for a CPU based post-process. This sample demonstrates a modified MLAA implementation adapted to run on the GPU. This update includes a further optimization which uses the stencil buffer to mask edges, and therefore reduce the workload for the second stage of the effect.
+The MLAA11 DirectX 11 sample demonstrates a post-process pixel shader technique that applies Fullscreen Anti-Aliasing to an image. Morphological Anti-Aliasing (MLAA) was originally developed by Intel Lab but was designed for a CPU based post-process. This sample demonstrates a modified MLAA implementation adapted to run on the GPU. This update includes a further optimization which uses the stencil buffer to mask edges, and therefore reduce the workload for the second stage of the effect.
 
 ### Prerequisites
 * AMD Radeon&trade; GCN-based GPU (HD 7000 series or newer)
@@ -13,15 +13,21 @@ This sample demonstrates a post-process pixel shader technique that applies Full
 * Additional documentation can be found in the `mlaa11\doc` directory.
 
 ### Premake
-The Visual Studio projects in the `mlaa11\build` directory were generated with Premake. To generate the project files yourself (for another version of Visual Studio, for example), open a command prompt in the `premake` directory and execute the following command:
+The Visual Studio solutions and projects in this repo were generated with Premake. To generate the project files yourself (for another version of Visual Studio, for example), open a command prompt in the `premake` directory and execute the following command:
 
 * `update_vs_files_for_dx11_sample.bat mlaa11 [action]`
 * For example: `update_vs_files_for_dx11_sample.bat mlaa11 vs2010`
 
 This version of Premake has been modified from the stock version to use the property sheet technique for the Windows SDK from this [Visual C++ Team blog post](http://blogs.msdn.com/b/vcblog/archive/2012/11/23/using-the-windows-8-sdk-with-visual-studio-2010-configuring-multiple-projects.aspx). The technique was originally described for using the Windows 8.0 SDK with Visual Studio 2010, but it applies more generally to using newer versions of the Windows SDK with older versions of Visual Studio.
 
-The default SDK for a particular version of Visual Studio (for 2012 or higher) is installed as part of Visual Studio installation. This default (Windows 8.0 SDK for Visual Studio 2012 and Windows 8.1 SDK for Visual Studio 2013) will be used if newer SDKs do not exist on the user's machine. However, the projects generated with this version of Premake will use the next higher SDK (Windows 8.1 SDK for Visual Studio 2012 and Windows 10 SDK with Visual Studio 2013), if the newer SDKs exist on the user's machine. For Visual Studio 2015, this version of Premake adds the WindowsTargetPlatformVersion element to the project file so that the Windows 10 SDK will be used.
+The default SDK for a particular version of Visual Studio (for 2012 or higher) is installed as part of Visual Studio installation. This default (Windows 8.0 SDK for Visual Studio 2012 and Windows 8.1 SDK for Visual Studio 2013) will be used if newer SDKs do not exist on the user's machine. However, the projects generated with this version of Premake will use the next higher SDK (Windows 8.1 SDK for Visual Studio 2012 and Windows 10 SDK with Visual Studio 2013), if the newer SDKs exist on the user's machine.
+
+For Visual Studio 2015, this version of Premake adds the `WindowsTargetPlatformVersion` element to the project file to specify which version of the Windows SDK will be used. To change `WindowsTargetPlatformVersion` for Visual Studio 2015, change the value for `_AMD_WIN_SDK_VERSION` in `premake\amd_premake_util.lua` and regenerate the Visual Studio files.
 
 ### Third-Party Software
 * DXUT is distributed under the terms of the MIT License. See `dxut\MIT.txt`.
 * Premake is distributed under the terms of the BSD License. See `premake\LICENSE.txt`.
+
+### Attribution
+* AMD, the AMD Arrow logo, Radeon, and combinations thereof are either registered trademarks or trademarks of Advanced Micro Devices, Inc. in the United States and/or other countries.
+* Microsoft, DirectX, Visual Studio, and Windows are either registered trademarks or trademarks of Microsoft Corporation in the United States and/or other countries.
