@@ -1,5 +1,5 @@
 # AMD Morphological Anti-Aliasing (MLAA) Sample
-<img src="mlaa11/media/Thumbnail.png" width="480" height="280" />
+<img src="mlaa11/media/Thumbnail.png" width="480" height="284" />
 
 The MLAA11 DirectX 11 sample demonstrates a post-process pixel shader technique that applies Fullscreen Anti-Aliasing to an image. Morphological Anti-Aliasing (MLAA) was originally developed by Intel Lab but was designed for a CPU based post-process. This sample demonstrates a modified MLAA implementation adapted to run on the GPU. This update includes a further optimization which uses the stencil buffer to mask edges, and therefore reduce the workload for the second stage of the effect.
 
